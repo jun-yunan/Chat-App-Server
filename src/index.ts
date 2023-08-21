@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import http from 'http';
 import cors from 'cors';
 import { Server } from 'socket.io';
@@ -31,6 +31,10 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         console.log('User disconnected', socket.id);
     });
+});
+
+app.get('/', (req: Request, res: Response) => {
+    res.send('Hello');
 });
 
 server.listen(3001, () => {
