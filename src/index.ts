@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import http from 'http';
 import cors from 'cors';
+import 'dotenv/config';
 import { Server } from 'socket.io';
 
 const app = express();
@@ -37,6 +38,7 @@ app.get('/', (req: Request, res: Response) => {
     res.send('Hello');
 });
 
-server.listen(3001, () => {
+const port = process.env.PORT || 3001;
+server.listen(port, () => {
     console.log('Server running on http://localhost:3001');
 });
